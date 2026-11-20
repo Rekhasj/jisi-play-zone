@@ -6,6 +6,7 @@ const baloo = Baloo_2({ subsets: ["latin"], variable: "--font-baloo", weight: ["
 const fredoka = Fredoka({ subsets: ["latin"], variable: "--font-fredoka", weight: ["400", "500", "600", "700"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://jisiplayzone.netlify.app"),
   title: "JiSi Play Zone | Indoor Soft Play & Birthday Parties in Kuppam",
   description:
     "Kuppam's indoor soft play zone for kids aged 1–12: ball pool, slides, trampoline, sandpit, car & bike rides and birthday party packages. Book on WhatsApp.",
