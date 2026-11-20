@@ -1,26 +1,193 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ---------- Candy playground theme ---------- */
+@theme {
+  --font-display: var(--font-baloo), ui-rounded, system-ui, sans-serif;
+  --font-sans: var(--font-fredoka), ui-rounded, system-ui, sans-serif;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Teal & coral palette — see reference/brand/jisi-colour-guide.html.
+     Class names are historic: `grape` is the brand teal, `sky` the light teal, `cherry`/`bubble` the coral. */
+  --color-ink: #12355b; /* navy — all text */
+  --color-cream: #f0fdfa;
+  --color-sun: #ffd166; /* soft yellow — buttons, prices */
+  --color-sun-dark: #f4b942;
+  --color-grass: #22c55e; /* leaf green — small doses only */
+  --color-grass-dark: #15803d;
+  --color-cherry: #ff7a59; /* coral */
+  --color-cherry-dark: #e4572e;
+  --color-sky: #2dd4bf; /* light teal — decoration */
+  --color-bubble: #ff7a59; /* coral */
+  --color-tangerine: #fb923c;
+  --color-grape: #0f766e; /* brand teal for text-bearing backgrounds */
+  --color-grape-dark: #115e59;
+  --color-lilac: #e6f7f5; /* pale teal */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* extra shades used by the cartoons */
+  --color-brand-bright: #14b8a6; /* play-equipment teal */
+  --color-brand-200: #5eead4;
+  --color-brand-100: #99f6e4;
+  --color-coral-light: #ffc2b0;
+
+  /* soft section backgrounds */
+  --color-sky-soft: #ccfbf1;
+  --color-sun-soft: #fff6dc;
+  --color-pink-soft: #fff1ec;
+  --color-mint-soft: #f0fdfa;
+
+  --animate-float: float 4s ease-in-out infinite;
+  --animate-bob: bob 2.2s ease-in-out infinite;
+  --animate-wiggle: wiggle 2.5s ease-in-out infinite;
+  --animate-spin-slow: spin 14s linear infinite;
+  --animate-pop: pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  --animate-drift: drift 40s linear infinite;
+  --animate-marquee: marquee 18s linear infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-14px) rotate(3deg); }
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-8deg); }
+    50% { transform: rotate(8deg); }
+  }
+  @keyframes pop {
+    from { transform: scale(0.6); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  @keyframes drift {
+    from { transform: translateX(-30%); }
+    to { transform: translateX(130vw); }
+  }
+  --animate-drive: drive 14s linear infinite;
+  --animate-drive-back: drive-back 19s linear infinite;
+  @keyframes drive {
+    from { transform: translateX(-160px); }
+    to { transform: translateX(calc(100vw + 40px)); }
+  }
+  @keyframes drive-back {
+    from { transform: translateX(calc(100vw + 40px)); }
+    to { transform: translateX(-160px); }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+@layer components {
+  /* Soft floating card */
+  .sticker {
+    box-shadow: 0 18px 40px -18px rgb(15 118 110 / 0.35), 0 2px 6px rgb(31 33 82 / 0.06);
+  }
+  .sticker-sm {
+    box-shadow: 0 8px 22px -10px rgb(15 118 110 / 0.3), 0 1px 3px rgb(31 33 82 / 0.06);
+  }
+
+  /* Rounded pill button with soft lift */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.8rem 1.5rem;
+    font-weight: 700;
+    font-size: 1.05rem;
+    box-shadow: 0 10px 22px -10px rgb(15 118 110 / 0.55);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  .btn:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 4px 10px -6px rgb(15 118 110 / 0.5);
+  }
+
+  /* kept for markup compatibility — plain headings now */
+  .text-outline {
+    text-shadow: none;
+  }
+
+  /* Confetti dot backgrounds */
+  .bg-confetti {
+    background-image:
+      radial-gradient(circle at 10% 20%, #ffffff55 0 6px, transparent 7px),
+      radial-gradient(circle at 80% 10%, #ffffff40 0 9px, transparent 10px),
+      radial-gradient(circle at 60% 70%, #ffffff40 0 5px, transparent 6px),
+      radial-gradient(circle at 30% 85%, #ffffff55 0 8px, transparent 9px),
+      radial-gradient(circle at 90% 60%, #ffffff40 0 6px, transparent 7px);
+    background-size: 260px 260px;
+  }
+  .bg-dots {
+    background-image: radial-gradient(#0f766e14 2px, transparent 2.5px);
+    background-size: 22px 22px;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px) scale(0.96);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after { animation: none !important; }
+}
+
+/* spinning wheels on the cartoon car and bike */
+.wheel {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: spin 0.6s linear infinite;
+}
+
+/* Scroll-in animations (see components/RevealObserver.tsx).
+   Only hidden once JS is running, so content never stays invisible without it. */
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-ready [data-reveal="up"] { transform: translateY(40px); }
+.reveal-ready [data-reveal="left"] { transform: translateX(-60px); }
+.reveal-ready [data-reveal="right"] { transform: translateX(60px); }
+.reveal-ready [data-reveal="zoom"] { transform: scale(0.85); }
+.reveal-ready [data-reveal][data-revealed] {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-ready [data-reveal] { opacity: 1; transform: none; transition: none; }
 }

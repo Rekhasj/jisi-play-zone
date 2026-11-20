@@ -1,0 +1,356 @@
+<title>JiSi Colour Guide</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700&display=swap">
+<style>
+/* Layout: one calm column of "sheets", each one a place the colours live (play area, website, T-shirt, print, Instagram, signboard).
+   Single light theme on purpose — colour swatches must look the same for everyone. */
+:root{
+  color-scheme: light;
+  --sky:#0D9488; --sky-deep:#0F766E; /* teal (historic token names) */ --sun:#FFD166; --coral:#FF7A59; --leaf:#22C55E;
+  --navy:#12355B; --cloud:#F0FDFA; --paper:#FFFFFF; --line:#CDEDE8; --muted:#4B6B78;
+  --display:"Baloo 2", ui-rounded, "Arial Rounded MT Bold", system-ui, sans-serif;
+  --body:"Nunito", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box}
+body{background:var(--cloud);color:var(--navy);font-family:var(--body);font-size:16px;line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;text-wrap:balance}
+h1{font-size:clamp(2.2rem,6vw,3.4rem);font-weight:800}
+h2{font-size:1.7rem;font-weight:800}
+h3{font-size:1.2rem;font-weight:800}
+p{margin:0;max-width:65ch}
+.lead{color:var(--muted);font-size:1.08rem}
+.eyebrow{font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sky-deep)}
+.sheet{background:var(--paper);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:16px;border:1px solid var(--line)}
+.hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:center}
+.hero-art{background:var(--sky);border-radius:22px;aspect-ratio:4/3;max-width:100%;overflow:hidden}
+@media (max-width:760px){.hero{grid-template-columns:1fr}}
+/* swatches */
+.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.sw{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--paper);display:flex;flex-direction:column}
+.chip{height:96px;display:flex;align-items:flex-end;padding:10px 12px;font-family:var(--display);font-weight:800;font-size:1.15rem}
+.meta{padding:10px 12px 12px;display:flex;flex-direction:column;gap:2px;font-size:.86rem}
+.meta b{font-size:.95rem}
+.code{font-variant-numeric:tabular-nums;color:var(--muted)}
+.copy{align-self:flex-start;margin-top:6px;border:1px solid var(--line);background:var(--cloud);color:var(--navy);border-radius:999px;padding:3px 12px;font:600 .8rem var(--body);cursor:pointer}
+.copy:focus-visible,.copy:hover{border-color:var(--sky);outline:none}
+/* proportion bar */
+.ratio{display:flex;height:46px;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.ratio span{display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;min-width:0}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.9rem;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:6px;vertical-align:-1px;border:1px solid var(--line)}
+/* places */
+.places{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.place{background:var(--paper);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
+.place .art{background:var(--cloud);display:flex;align-items:center;justify-content:center;padding:14px;height:200px}
+.place .art svg{max-width:100%;height:100%}
+.place .txt{padding:16px 18px 20px;display:flex;flex-direction:column;gap:10px}
+.mix{display:flex;height:10px;border-radius:99px;overflow:hidden}
+ul{margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:4px}
+li{max-width:60ch}
+.tag{display:inline-block;font-size:.75rem;font-weight:700;padding:2px 10px;border-radius:999px;background:var(--cloud);color:var(--sky-deep);border:1px solid var(--line)}
+/* do / don't */
+.dd{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.dd > div{border-radius:18px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.do{background:#ECFDF3;border:1px solid #BBF7D0}
+.dont{background:#FFF1EC;border:1px solid #FFC2B0}
+.alt{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.alt span{width:44px;height:44px;border-radius:12px;border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--display);font-weight:800}
+.tw{overflow-x:auto}
+@media (prefers-reduced-motion:no-preference){.bob{animation:bob 2.4s ease-in-out infinite;transform-box:fill-box}@keyframes bob{50%{transform:translateY(-6px)}}}
+</style>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <span class="eyebrow">JiSi Play Zone · Kuppam</span>
+      <h1>One set of colours for the play area, website, T-shirts and posters</h1>
+      <p class="lead">Teal and soft yellow with a pop of coral, on clean white. The play equipment is the colourful star; the website, print and uniforms use the same colours more calmly, so parents recognise JiSi everywhere and every photo of the play area looks on-brand.</p>
+    </div>
+    <div class="hero-art" role="img" aria-label="Cartoon of a teal play frame with a yellow beam and a coral slide on white floor">
+      <svg viewBox="0 0 400 300" width="100%" height="100%">
+        <rect width="400" height="300" fill="#0D9488"/>
+        <circle cx="70" cy="70" r="26" fill="#F0FDFA" opacity=".35"/><circle cx="330" cy="50" r="18" fill="#F0FDFA" opacity=".35"/>
+        <rect x="0" y="230" width="400" height="70" fill="#F0FDFA"/>
+        <g fill="#FFFFFF" opacity=".9">
+          <rect x="0" y="250" width="50" height="25"/><rect x="100" y="250" width="50" height="25"/><rect x="200" y="250" width="50" height="25"/><rect x="300" y="250" width="50" height="25"/>
+          <rect x="50" y="275" width="50" height="25"/><rect x="150" y="275" width="50" height="25"/><rect x="250" y="275" width="50" height="25"/><rect x="350" y="275" width="50" height="25"/>
+        </g>
+        <rect x="110" y="70" width="14" height="170" rx="7" fill="#0F766E"/><rect x="290" y="70" width="14" height="170" rx="7" fill="#0F766E"/>
+        <rect x="96" y="60" width="222" height="20" rx="10" fill="#FFD166"/>
+        <rect x="124" y="140" width="166" height="14" rx="7" fill="#FFD166"/>
+        <path d="M290 150 C340 160 320 225 370 232" stroke="#FF7A59" stroke-width="22" fill="none" stroke-linecap="round"/>
+        <g class="bob"><circle cx="200" cy="118" r="12" fill="#F3C19B"/><path d="M188 114 Q200 98 212 114 Z" fill="#12355B"/><path d="M200 130 V140" stroke="#FF7A59" stroke-width="12" stroke-linecap="round"/></g>
+        <g><circle cx="150" cy="224" r="9" fill="#FFD166"/><circle cx="168" cy="226" r="9" fill="#FF7A59"/><circle cx="186" cy="224" r="9" fill="#FFFFFF"/><circle cx="204" cy="226" r="9" fill="#0D9488" stroke="#FFFFFF" stroke-width="2"/><circle cx="222" cy="224" r="9" fill="#FFD166"/></g>
+      </svg>
+    </div>
+  </header>
+
+  <section class="sheet" aria-labelledby="pal">
+    <span class="eyebrow">The palette</span>
+    <h2 id="pal">Five brand colours, one helper</h2>
+    <p class="lead">Give these exact codes to everyone: the play-equipment supplier, the T-shirt printer and the poster designer. HEX is for screens, CMYK is for print.</p>
+    <div class="swatches" id="swatches"></div>
+  </section>
+
+  <section class="sheet" aria-labelledby="mix">
+    <span class="eyebrow">How much of each</span>
+    <h2 id="mix">The 60 · 25 · 10 · 5 rule</h2>
+    <p>Most of any space or design is calm white, then teal, then a little yellow, and only a pop of coral. Navy is only for text and logos. Keeping to this mix is what stops a kids’ place from looking messy.</p>
+    <div class="ratio" role="img" aria-label="60 percent white, 25 percent teal, 10 percent yellow, 5 percent coral">
+      <span style="flex:60;background:#F0FDFA;color:#12355B">60% white</span>
+      <span style="flex:25;background:#0D9488;color:#FFFFFF">25% teal</span>
+      <span style="flex:10;background:#FFD166;color:#12355B">10%</span>
+      <span style="flex:5;background:#FF7A59"></span>
+    </div>
+    <div class="legend"><span><i style="background:#F0FDFA"></i>Cloud white: walls, page backgrounds</span><span><i style="background:#0D9488"></i>Teal: the brand colour</span><span><i style="background:#FFD166"></i>Soft yellow: buttons, prices, highlights</span><span><i style="background:#FF7A59"></i>Coral: slides, offers, party touches</span></div>
+  </section>
+
+  <section aria-labelledby="where" style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span class="eyebrow">Where the colours go</span>
+      <h2 id="where">Same colours, different strength in each place</h2>
+      <p class="lead">The play area is the loudest. Everything else steps back so the play area and the kids stay the heroes.</p>
+    </div>
+
+    <div class="places">
+
+      <article class="place">
+        <div class="art" role="img" aria-label="Play frame in teal with yellow beams, coral slide, white net and white walls">
+          <svg viewBox="0 0 300 170">
+            <rect width="300" height="170" fill="#FFFFFF"/><rect y="140" width="300" height="30" fill="#CCFBF1"/>
+            <g fill="#0D9488"><rect y="140" width="30" height="30"/><rect x="60" y="140" width="30" height="30"/><rect x="120" y="140" width="30" height="30"/><rect x="180" y="140" width="30" height="30"/><rect x="240" y="140" width="30" height="30"/></g>
+            <rect x="60" y="30" width="170" height="110" fill="url(#n)"/>
+            <defs><pattern id="n" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V12M0 0H12" stroke="#94A3B8" stroke-width="1"/></pattern></defs>
+            <rect x="54" y="26" width="12" height="114" rx="6" fill="#0D9488"/><rect x="224" y="26" width="12" height="114" rx="6" fill="#0D9488"/>
+            <rect x="48" y="20" width="194" height="14" rx="7" fill="#FFD166"/><rect x="66" y="82" width="158" height="10" rx="5" fill="#FFD166"/>
+            <path d="M230 88 C268 94 252 134 290 138" stroke="#FF7A59" stroke-width="16" fill="none" stroke-linecap="round"/>
+            <g><circle cx="80" cy="132" r="6" fill="#FFD166"/><circle cx="93" cy="133" r="6" fill="#FF7A59"/><circle cx="106" cy="132" r="6" fill="#FFFFFF" stroke="#E2E8F0"/><circle cx="119" cy="133" r="6" fill="#0D9488"/></g>
+          </svg>
+        </div>
+        <div class="txt">
+          <span class="tag">For the equipment supplier</span>
+          <h3>Indoor play area</h3>
+          <div class="mix"><span style="flex:35;background:#0D9488"></span><span style="flex:25;background:#FFD166"></span><span style="flex:15;background:#FF7A59"></span><span style="flex:25;background:#FFFFFF;border:1px solid #CDEDE8"></span></div>
+          <ul>
+            <li><b>Frame posts and pipes:</b> teal</li>
+            <li><b>Padded beams, platforms, steps:</b> soft yellow</li>
+            <li><b>Wave slide and tunnel slide:</b> coral, or one coral and one yellow</li>
+            <li><b>Safety nets:</b> white (looks clean and bright in photos)</li>
+            <li><b>Ball pit:</b> equal mix of teal, yellow, coral and white balls, nothing else</li>
+            <li><b>Floor mats:</b> teal and white checks, navy edging strip</li>
+            <li><b>Walls and ceiling:</b> cloud white with teal cloud murals; one coral or yellow feature wall in the party room</li>
+            <li><b>Ride-on car and bikes, sandpit edge:</b> coral and yellow</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="place">
+        <div class="art" role="img" aria-label="Website mock with teal header, white page and yellow buttons">
+          <svg viewBox="0 0 300 170">
+            <rect x="20" y="8" width="260" height="154" rx="12" fill="#FFFFFF" stroke="#CDEDE8"/>
+            <rect x="20" y="8" width="260" height="26" rx="12" fill="#0D9488"/><rect x="20" y="22" width="260" height="12" fill="#0D9488"/>
+            <rect x="32" y="16" width="44" height="10" rx="5" fill="#FFFFFF"/><rect x="224" y="15" width="46" height="12" rx="6" fill="#FFD166"/>
+            <rect x="20" y="34" width="260" height="60" fill="#CCFBF1"/>
+            <rect x="70" y="46" width="160" height="12" rx="6" fill="#12355B"/><rect x="96" y="64" width="108" height="7" rx="3.5" fill="#4B6B78"/>
+            <rect x="96" y="76" width="50" height="12" rx="6" fill="#0D9488"/><rect x="152" y="76" width="50" height="12" rx="6" fill="#FFD166"/>
+            <rect x="36" y="104" width="70" height="46" rx="8" fill="#FFFFFF" stroke="#CDEDE8"/><rect x="115" y="104" width="70" height="46" rx="8" fill="#FFFFFF" stroke="#CDEDE8"/><rect x="194" y="104" width="70" height="46" rx="8" fill="#FFFFFF" stroke="#FF7A59" stroke-width="2"/>
+            <rect x="46" y="128" width="40" height="8" rx="4" fill="#12355B"/><rect x="125" y="128" width="40" height="8" rx="4" fill="#12355B"/><rect x="204" y="128" width="40" height="8" rx="4" fill="#12355B"/>
+          </svg>
+        </div>
+        <div class="txt">
+          <span class="tag">For the website</span>
+          <h3>Website</h3>
+          <div class="mix"><span style="flex:60;background:#F0FDFA;border:1px solid #CDEDE8"></span><span style="flex:25;background:#0D9488"></span><span style="flex:10;background:#FFD166"></span><span style="flex:5;background:#FF7A59"></span></div>
+          <ul>
+            <li><b>Header, footer, banners:</b> teal with white text</li>
+            <li><b>Page background:</b> white and cloud white, so play-area photos pop</li>
+            <li><b>Main buttons (Book now):</b> soft yellow with navy text</li>
+            <li><b>Highlights and offers:</b> small coral badges only</li>
+            <li><b>All text:</b> navy, never pure black</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="place">
+        <div class="art" role="img" aria-label="Teal staff T-shirt and yellow party-host T-shirt with navy logo">
+          <svg viewBox="0 0 300 170">
+            <g transform="translate(30 14)">
+              <path d="M30 0 L55 0 Q65 14 75 0 L100 0 L126 26 L108 44 L100 36 L100 142 L30 142 L30 36 L22 44 L4 26 Z" fill="#0D9488"/>
+              <path d="M55 0 Q65 14 75 0" stroke="#0F766E" stroke-width="4" fill="none"/>
+              <circle cx="65" cy="56" r="14" fill="#FFFFFF"/><text x="65" y="61" text-anchor="middle" font-size="12" font-weight="800" fill="#12355B" font-family="Baloo 2, sans-serif">JiSi</text>
+              <text x="65" y="160" text-anchor="middle" font-size="11" font-weight="700" fill="#4B6B78" font-family="Nunito, sans-serif">Floor staff</text>
+            </g>
+            <g transform="translate(160 14)">
+              <path d="M30 0 L55 0 Q65 14 75 0 L100 0 L126 26 L108 44 L100 36 L100 142 L30 142 L30 36 L22 44 L4 26 Z" fill="#FFD166"/>
+              <path d="M55 0 Q65 14 75 0" stroke="#12355B" stroke-width="4" fill="none"/>
+              <circle cx="65" cy="56" r="14" fill="#0D9488"/><text x="65" y="61" text-anchor="middle" font-size="12" font-weight="800" fill="#FFFFFF" font-family="Baloo 2, sans-serif">JiSi</text>
+              <text x="65" y="160" text-anchor="middle" font-size="11" font-weight="700" fill="#4B6B78" font-family="Nunito, sans-serif">Party host</text>
+            </g>
+          </svg>
+        </div>
+        <div class="txt">
+          <span class="tag">For the T-shirt printer</span>
+          <h3>Staff T-shirts</h3>
+          <ul>
+            <li><b>Floor staff:</b> teal T-shirt, white JiSi logo on the chest, “JiSi Play Zone · Kuppam” in navy on the back</li>
+            <li><b>Party host:</b> soft-yellow T-shirt, so parents can spot the host at a party</li>
+            <li><b>Collar and sleeve trim:</b> navy, which hides marks</li>
+            <li>Avoid white T-shirts: they stain quickly in a play area</li>
+            <li>Order 2–3 per person so a clean one is always ready</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="place">
+        <div class="art" role="img" aria-label="Pamphlet with teal top band, yellow price burst and navy phone number">
+          <svg viewBox="0 0 300 170">
+            <rect x="85" y="6" width="130" height="158" rx="6" fill="#FFFFFF" stroke="#CDEDE8"/>
+            <rect x="85" y="6" width="130" height="44" rx="6" fill="#0D9488"/><rect x="85" y="40" width="130" height="10" fill="#0D9488"/>
+            <text x="150" y="33" text-anchor="middle" font-size="16" font-weight="800" fill="#FFFFFF" font-family="Baloo 2, sans-serif">JiSi Play Zone</text>
+            <rect x="98" y="62" width="80" height="8" rx="4" fill="#12355B"/><rect x="98" y="76" width="60" height="6" rx="3" fill="#4B6B78"/>
+            <circle cx="186" cy="92" r="20" fill="#FFD166"/><text x="186" y="97" text-anchor="middle" font-size="12" font-weight="800" fill="#12355B" font-family="Baloo 2, sans-serif">₹200</text>
+            <rect x="98" y="104" width="54" height="22" rx="6" fill="#FF7A59"/><text x="125" y="119" text-anchor="middle" font-size="9" font-weight="800" fill="#FFFFFF" font-family="Nunito, sans-serif">OFFER</text>
+            <rect x="85" y="138" width="130" height="26" fill="#12355B"/><text x="150" y="155" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF" font-family="Nunito, sans-serif">Call / WhatsApp</text>
+          </svg>
+        </div>
+        <div class="txt">
+          <span class="tag">For the print shop</span>
+          <h3>Pamphlets and flyers</h3>
+          <ul>
+            <li><b>Paper:</b> white; teal band at the top with the JiSi name</li>
+            <li><b>Prices:</b> inside a yellow circle (₹200 weekday, ₹300 weekend)</li>
+            <li><b>Offers:</b> coral sticker shape, one per flyer</li>
+            <li><b>Phone and WhatsApp:</b> large, on a navy strip at the bottom</li>
+            <li>Ask for a printed proof first: screen colours look brighter than paper</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="place">
+        <div class="art" role="img" aria-label="Instagram grid of teal, yellow and white posts in rotation">
+          <svg viewBox="0 0 300 170">
+            <g transform="translate(66 4)">
+              <rect width="52" height="52" rx="6" fill="#0D9488"/><rect x="58" width="52" height="52" rx="6" fill="#FFD166"/><rect x="116" width="52" height="52" rx="6" fill="#FFFFFF" stroke="#CDEDE8"/>
+              <rect y="58" width="52" height="52" rx="6" fill="#FFFFFF" stroke="#CDEDE8"/><rect x="58" y="58" width="52" height="52" rx="6" fill="#0D9488"/><rect x="116" y="58" width="52" height="52" rx="6" fill="#FFD166"/>
+              <rect y="116" width="52" height="46" rx="6" fill="#FFD166"/><rect x="58" y="116" width="52" height="46" rx="6" fill="#FFFFFF" stroke="#CDEDE8"/><rect x="116" y="116" width="52" height="46" rx="6" fill="#0D9488"/>
+              <g fill="#FFFFFF"><rect x="10" y="20" width="32" height="6" rx="3"/><rect x="68" y="78" width="32" height="6" rx="3"/><rect x="126" y="134" width="32" height="6" rx="3"/></g>
+              <g fill="#12355B"><text x="84" y="32" text-anchor="middle" font-size="12" font-weight="800" font-family="Baloo 2, sans-serif">₹200</text><text x="142" y="90" text-anchor="middle" font-size="10" font-weight="800" font-family="Baloo 2, sans-serif">Offer</text><text x="26" y="143" text-anchor="middle" font-size="10" font-weight="800" font-family="Baloo 2, sans-serif">Party</text></g>
+              <g fill="#CCFBF1"><rect x="122" y="6" width="40" height="40" rx="4"/><rect x="6" y="64" width="40" height="40" rx="4"/><rect x="64" y="122" width="40" height="34" rx="4"/></g>
+            </g>
+          </svg>
+        </div>
+        <div class="txt">
+          <span class="tag">For Instagram and WhatsApp status</span>
+          <h3>Social posts</h3>
+          <ul>
+            <li><b>Teal post:</b> news and announcements (opening, holidays)</li>
+            <li><b>Yellow post:</b> prices, offers and memberships</li>
+            <li><b>White post with a photo:</b> real moments from the play area and parties</li>
+            <li>Rotate the three so the profile grid looks planned and tidy</li>
+            <li>Same fonts every time, logo in the same corner, phone number on offer posts</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="place">
+        <div class="art" role="img" aria-label="Shop signboard: teal board, white JiSi name, yellow strip, navy phone">
+          <svg viewBox="0 0 300 170">
+            <rect x="0" y="120" width="300" height="50" fill="#E2E8F0"/>
+            <rect x="20" y="24" width="260" height="96" rx="8" fill="#0D9488"/>
+            <text x="150" y="68" text-anchor="middle" font-size="30" font-weight="800" fill="#FFFFFF" font-family="Baloo 2, sans-serif">JiSi Play Zone</text>
+            <rect x="20" y="80" width="260" height="22" fill="#FFD166"/>
+            <text x="150" y="96" text-anchor="middle" font-size="12" font-weight="800" fill="#12355B" font-family="Nunito, sans-serif">Indoor soft play · Birthday parties</text>
+            <text x="150" y="114" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" font-family="Nunito, sans-serif">Call / WhatsApp: your number</text>
+            <circle cx="44" cy="44" r="10" fill="#FF7A59"/>
+          </svg>
+        </div>
+        <div class="txt">
+          <span class="tag">For the sign maker</span>
+          <h3>Shop signboard</h3>
+          <ul>
+            <li><b>Board:</b> teal with big white “JiSi Play Zone”</li>
+            <li><b>Strip:</b> yellow with navy text, “Indoor soft play · Birthday parties”</li>
+            <li><b>Phone number:</b> large enough to read from the road</li>
+            <li>Only these colours, so the board is clear from a distance</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="sheet" aria-labelledby="rules">
+    <span class="eyebrow">Keep it looking good</span>
+    <h2 id="rules">Simple rules for everyone</h2>
+    <div class="dd">
+      <div class="do">
+        <h3>Do</h3>
+        <ul>
+          <li>Keep walls and floors light so the colourful equipment stands out and the room feels bigger</li>
+          <li>Use at most three bright colours in any one spot</li>
+          <li>Use the same two fonts everywhere: Baloo 2 for headings and Nunito for text</li>
+          <li>Show the supplier and printer this page and ask for a physical colour sample before the big order</li>
+        </ul>
+      </div>
+      <div class="dont">
+        <h3>Avoid</h3>
+        <ul>
+          <li>The old “every colour of the rainbow” look: it photographs as messy</li>
+          <li>Dark walls or dark floors: the room looks small and photos come out dim</li>
+          <li>Adding purple or extra colours on posters “just for fun”</li>
+          <li>Black text: use navy, it’s softer and matches</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet" aria-labelledby="codes">
+    <span class="eyebrow">Quick reference</span>
+    <h2 id="codes">Colour codes for suppliers</h2>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Colour</th><th>HEX (screens)</th><th>RGB</th><th>CMYK (print, approx.)</th><th>Used for</th></tr></thead>
+        <tbody id="codeRows"></tbody>
+      </table>
+    </div>
+    <p class="lead">CMYK values are close starting points. Printers and equipment makers each have their own colour cards, so ask them to match the HEX swatch and show you a sample. On the website, white text sits on a slightly deeper teal (#0F766E) so it is easy to read.</p>
+  </section>
+
+  <section class="sheet" aria-labelledby="alt">
+    <span class="eyebrow">The other option we compared</span>
+    <h2 id="alt">Sky and sunshine</h2>
+    <p>Teal frame, yellow pads, pink-coral slides, navy text on white. Brighter and sunnier; kept here in case you ever want a seasonal campaign in these colours.</p>
+    <div class="alt" role="img" aria-label="Teal, soft yellow, coral, navy and white swatches">
+      <span style="background:#0EA5E9"></span><span style="background:#FACC15"></span><span style="background:#FB7185"></span><span style="background:#0C2D48"></span><span style="background:#FFFFFF"></span>
+    </div>
+  </section>
+
+</div>
+
+<script>
+const C=[
+ {n:"Teal",r:"Brand colour",hex:"#0D9488",rgb:"13, 148, 136",cmyk:"91, 0, 8, 42",use:"Equipment frame, website header, staff T-shirts, signboard",fg:"#FFFFFF"},
+ {n:"Soft yellow",r:"Highlight",hex:"#FFD166",rgb:"255, 209, 102",cmyk:"0, 18, 60, 0",use:"Padded beams, Book now buttons, price circles, party-host T-shirts",fg:"#12355B"},
+ {n:"Coral",r:"Pop",hex:"#FF7A59",rgb:"255, 122, 89",cmyk:"0, 52, 65, 0",use:"Slides, ride-ons, offer stickers, party touches",fg:"#FFFFFF"},
+ {n:"Navy",r:"Text and logo",hex:"#12355B",rgb:"18, 53, 91",cmyk:"80, 42, 0, 64",use:"All text, logo outline, T-shirt trim, flyer phone strip",fg:"#FFFFFF"},
+ {n:"Cloud white",r:"Background",hex:"#F0FDFA",rgb:"240, 253, 250",cmyk:"5, 0, 1, 1",use:"Walls, page backgrounds, flyer paper tint",fg:"#12355B"},
+ {n:"Leaf green",r:"Helper, small doses",hex:"#22C55E",rgb:"34, 197, 94",cmyk:"83, 0, 52, 23",use:"Plants, small stickers, ‘open now’ dots only",fg:"#FFFFFF"}
+];
+document.getElementById('swatches').innerHTML=C.map((c,i)=>`
+ <div class="sw">
+  <div class="chip" style="background:${c.hex};color:${c.fg}">${c.n}</div>
+  <div class="meta"><b>${c.r}</b><span class="code">HEX ${c.hex}</span><span class="code">CMYK ${c.cmyk}</span>
+   <button class="copy" id="copy-${i}" data-hex="${c.hex}" type="button">Copy ${c.hex}</button></div>
+ </div>`).join('');
+document.getElementById('codeRows').innerHTML=C.map(c=>`<tr><td><span style="display:inline-block;width:14px;height:14px;border-radius:4px;background:${c.hex};border:1px solid #CDEDE8;vertical-align:-2px;margin-right:6px"></span>${c.n}</td><td class="code">${c.hex}</td><td class="code">${c.rgb}</td><td class="code">${c.cmyk}</td><td>${c.use}</td></tr>`).join('');
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{
+  const hex=b.dataset.hex, done=()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy '+hex,1400)};
+  try{navigator.clipboard.writeText(hex).then(done).catch(()=>{b.textContent=hex});}catch(e){b.textContent=hex}
+}));
+</script>
