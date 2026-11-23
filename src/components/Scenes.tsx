@@ -60,14 +60,24 @@ export function ClimbScene({ className = "" }: { className?: string }) {
 }
 
 /** Birthday party: bunting, banner, balloons, cake and gifts. `accent` tints table, banner and balloons. */
-export function PartyScene({ className = "", accent = "var(--color-grape)", fit = "meet" }: { className?: string; accent?: string; fit?: "slice" | "meet" }) {
+export function PartyScene({
+  className = "",
+  accent = "var(--color-grape)",
+  fit = "meet",
+  transparent = false,
+}: {
+  className?: string;
+  accent?: string;
+  fit?: "slice" | "meet";
+  transparent?: boolean; // no pink background (for printed banners)
+}) {
   const balloons: [number, number, string][] = [
     [24, 72, "var(--color-sun)"], [38, 52, accent], [34, 92, "var(--color-sky)"],
     [196, 72, "var(--color-cherry)"], [182, 52, "#34c78a"], [186, 92, accent],
   ];
   return (
     <svg viewBox="0 0 220 160" className={className} preserveAspectRatio={`xMidYMid ${fit}`} aria-hidden>
-      <rect width="220" height="160" fill="var(--color-pink-soft)" />
+      {!transparent && <rect width="220" height="160" fill="var(--color-pink-soft)" />}
       <path d="M0 18 Q110 44 220 18" stroke="var(--color-sky-soft)" strokeWidth="2" fill="none" />
       {[14, 38, 62, 86, 110, 134, 158, 182, 206].map((x, i) => {
         const dy = Math.round(Math.sin(i / 1.4) * 5);

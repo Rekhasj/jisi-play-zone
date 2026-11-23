@@ -191,3 +191,9 @@ h1, h2, h3, h4, .font-display {
 @media (prefers-reduced-motion: reduce) {
   .reveal-ready [data-reveal] { opacity: 1; transform: none; transition: none; }
 }
+
+/* Banners are saved as still images: freeze every cartoon animation so positions never shift. */
+.banner-static,
+.banner-static * {
+  animation: none !important;
+}
