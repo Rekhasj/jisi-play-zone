@@ -59,7 +59,7 @@ export function About() {
             Kuppam&apos;s happiest place to <span className="text-grape">play &amp; celebrate!</span>
           </h2>
           <p className="mt-4 text-lg text-ink/80">
-            JiSi Play Zone is an indoor soft play centre from the team behind JiSi Events &amp; Decorations. Kids climb, slide,
+            JiSi Play Zone is an indoor soft play centre for kids in Kuppam. Kids climb, slide,
             bounce and make new friends while parents relax nearby.
           </p>
           <p className="mt-3 text-lg text-ink/80">

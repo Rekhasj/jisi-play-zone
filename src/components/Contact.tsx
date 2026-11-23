@@ -243,7 +243,7 @@ export function Footer() {
         <div>
           <Logo light />
           <p className="mt-4 text-white/80">
-            A bright, safe and soft indoor play world in Kuppam, made for little explorers and their families. Brought to you by JiSi Events &amp; Decorations.
+            A bright, safe and soft indoor play world in Kuppam, made for little explorers and their families.
           </p>
           <div className="mt-5 flex gap-3">
             {[
@@ -336,7 +336,7 @@ export function Footer() {
         </div>
       </div>
       <p className="border-t border-white/10 px-4 py-5 pb-24 text-center text-xs text-white/60 md:pb-5">
-        © {new Date().getFullYear()} {BUSINESS.name}, {BUSINESS.city}. A JiSi Events venture.
+        © {new Date().getFullYear()} {BUSINESS.name}, {BUSINESS.city}.
       </p>
     </footer>
   );
