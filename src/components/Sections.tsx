@@ -63,14 +63,14 @@ export function About() {
             bounce and make new friends while parents relax nearby.
           </p>
           <p className="mt-3 text-lg text-ink/80">
-            Book a birthday party and you get the play zone, the party room and theme decoration all in one place.
+            Book a birthday party and you get the play zone, the party area and theme decoration all in one place.
           </p>
           <ul className="mt-5 grid grid-cols-2 gap-2.5">
             {[
               ["🛡️", "Soft padded play"],
               ["👩‍🏫", "Trained staff"],
               ["🛋️", "Parent lounge"],
-              ["🎈", "Party room"],
+              ["🎈", "Party area"],
               ["📹", "CCTV monitored"],
             ].map(([icon, t]) => (
               <li key={t} className="sticker-sm flex items-center gap-2 rounded-2xl bg-white px-3 py-2 font-semibold">
@@ -173,12 +173,28 @@ export function Pricing() {
                 <div className="border-t-2 border-dashed border-ink/30 px-2 pb-4 pt-3">
                   <div className="font-display text-5xl text-ink sm:text-6xl">{rupee(t.price)}</div>
                   <div className="text-sm font-semibold text-ink/60">per child · {PRICING.session}</div>
-                  <div className="mx-auto mt-2 w-fit rounded-full bg-lilac px-3 py-1 text-xs font-bold text-grape">🚗 🚲 {PRICING.rides}</div>
                 </div>
                 {selected && <span className="absolute right-2 top-2 text-2xl">✅</span>}
               </button>
             );
           })}
+        </div>
+
+        {/* Rides add-on (not included in the ticket) */}
+        <div data-reveal="up" className="sticker-sm mt-6 flex items-center gap-4 rounded-3xl bg-white p-4">
+          <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-lilac text-3xl" aria-hidden>
+            🚗
+          </span>
+          <div className="flex-1">
+            <div className="font-display text-xl leading-tight text-ink">Fun Rides</div>
+            <div className="text-sm font-semibold text-ink/60">
+              {PRICING.rides.types} · mix &amp; match
+            </div>
+          </div>
+          <div className="text-right">
+            <div className="font-display text-3xl leading-none text-grape">{rupee(PRICING.rides.price)}</div>
+            <div className="text-xs font-bold text-ink/60">for {PRICING.rides.rounds} rounds</div>
+          </div>
         </div>
 
         {/* Mini calculator */}
@@ -248,17 +264,14 @@ export function Pricing() {
   );
 }
 
-const MEMBERSHIP_ART = { balloon: null, rocket: Rocket, trophy: Trophy, sun: SunFace } as const;
+const MEMBERSHIP_ART = { rocket: Rocket, trophy: Trophy, sun: SunFace } as const;
 const MEMBERSHIP_TONE = {
-  teal: { panel: "bg-sky-soft", text: "text-grape-dark", button: "bg-grape-dark text-white", chip: "bg-sky-soft text-grape-dark" },
   brand: { panel: "bg-lilac", text: "text-grape", button: "bg-grape text-white", chip: "bg-lilac text-grape" },
   navy: { panel: "bg-sun-soft", text: "text-ink", button: "bg-ink text-white", chip: "bg-sun-soft text-ink" },
   coral: { panel: "bg-pink-soft", text: "text-cherry-dark", button: "bg-cherry-dark text-white", chip: "bg-pink-soft text-cherry-dark" },
 } as const;
 
 export function Membership() {
-  const base = PRICING.tickets[0].price; // weekday price per hour
-
   return (
     <Section id="membership" bg="bg-mint-soft" fill="text-mint-soft">
       <Star className="absolute left-6 top-16 w-8 animate-wiggle" />
@@ -267,14 +280,12 @@ export function Membership() {
         <SectionTitle
           eyebrow="Membership"
           title="Play More, Pay Less!"
-          text={`One card for every day of the week. Normal price is ${rupee(base)}–${rupee(PRICING.tickets[1].price)} per hour.`}
+          text="One card for every day of the week, Monday to Sunday."
         />
-        <div className="no-scrollbar -mx-4 flex snap-x snap-mandatory items-stretch gap-5 overflow-x-auto px-6 pb-6 pt-4 md:grid md:grid-cols-2 md:overflow-visible lg:grid-cols-4">
+        <div className="no-scrollbar -mx-4 flex snap-x snap-mandatory items-stretch gap-5 overflow-x-auto px-6 pb-6 pt-4 md:mx-auto md:grid md:max-w-5xl md:grid-cols-3 md:overflow-visible">
           {MEMBERSHIPS.map((m, i) => {
-            // Unlimited = up to one visit a day: compare with ~30 visits at the weekday price.
-            const worth = m.hours ? m.hours * base : 30 * base;
-            const save = Math.floor((worth - m.price) / 100) * 100;
-            const perHour = m.hours ? Math.round(m.price / m.hours) : null;
+            // Daily Play Pass shows its price per day (30 days); hour passes show no badge.
+            const perDay = m.hours ? null : `${rupee(Math.round(m.price / 30))} / day`;
             const tone = MEMBERSHIP_TONE[m.tone];
             const Art = MEMBERSHIP_ART[m.art];
             return (
@@ -292,21 +303,23 @@ export function Membership() {
                   </span>
                 )}
 
-                {/* cartoon panel with the saving */}
+                {/* cartoon panel (Daily Play Pass also shows its price per day) */}
                 <div className={`relative flex h-36 items-center justify-center ${tone.panel}`}>
-                  {Art ? <Art className="h-24 w-24 animate-float" /> : <Mascot className="h-28 w-20 animate-float" color="var(--color-cherry)" />}
-                  <span className="absolute right-3 top-3 rotate-6 rounded-2xl bg-sun px-2.5 py-1 text-center font-display text-sm leading-tight text-ink shadow-md">
-                    {m.hours ? "Save" : "Save up to"}
-                    <br />
-                    {rupee(save)}
-                  </span>
+                  <Art className="h-24 w-24 animate-float" />
+                  {perDay && (
+                    <span className="absolute right-3 top-3 rotate-6 rounded-2xl bg-sun px-2.5 py-1 text-center font-display text-sm leading-tight text-ink shadow-md">
+                      Only
+                      <br />
+                      {perDay}
+                    </span>
+                  )}
                 </div>
 
                 <div className="flex flex-1 flex-col px-5 pb-5 pt-4">
                   <h3 className={`text-2xl leading-tight ${tone.text}`}>{m.name}</h3>
 
                   <div className="mt-2 flex flex-wrap gap-1.5 text-xs font-bold">
-                    <span className={`rounded-full px-2.5 py-1 ${tone.chip}`}>⏱ {m.hours ? `${m.hours} hours` : "1 visit a day"}</span>
+                    <span className={`rounded-full px-2.5 py-1 ${tone.chip}`}>⏱ {m.hours ? `${m.hours} hours` : "1 hour every day"}</span>
                     <span className={`rounded-full px-2.5 py-1 ${tone.chip}`}>📅 {m.validity}</span>
                   </div>
 
@@ -314,17 +327,6 @@ export function Membership() {
                     <span className="font-display text-4xl text-ink">{rupee(m.price)}</span>
                     {!m.hours && <span className="font-bold text-ink/60">/month</span>}
                   </div>
-                  <p className="text-sm font-semibold text-ink/55">
-                    {perHour ? (
-                      <>
-                        only {rupee(perHour)}/hr · <s>{rupee(worth)}</s>
-                      </>
-                    ) : (
-                      <>
-                        max 2 hrs a visit · daily play worth <s>{rupee(worth)}</s>
-                      </>
-                    )}
-                  </p>
 
                   <ul className="mt-4 space-y-2 text-sm font-medium text-ink/80">
                     {m.perks.map((p) => (
@@ -338,7 +340,7 @@ export function Membership() {
                   <div className="mt-auto pt-5">
                   <a
                     href={whatsAppLink(
-                      `Hi JiSi Play Zone! I'm interested in the ${m.name} membership (${m.hours ? `${m.hours} hours` : "one visit a day"}, ${m.validity}, ${rupee(m.price)}).`
+                      `Hi JiSi Play Zone! I'm interested in the ${m.name} membership (${m.hours ? `${m.hours} hours` : "1 hour every day"}, ${m.validity}, ${rupee(m.price)}).`
                     )}
                     target="_blank"
                     rel="noopener noreferrer"

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { BIRTHDAY_PACKAGES, BUSINESS, FAQS, NAV_LINKS, OPENING_HOURS, TESTIMONIALS, telLink, whatsAppLink } from "@/data/site";
+import { BIRTHDAY_OPTIONS, BUSINESS, FAQS, NAV_LINKS, OPENING_HOURS, TESTIMONIALS, telLink, whatsAppLink } from "@/data/site";
 import { Logo } from "./Header";
 import { fmtTime } from "./Hero";
 import { Bike, Cloud, Mascot, Section, SectionTitle, Star, Wave, WhatsAppIcon } from "./ui";
@@ -107,7 +107,7 @@ export function FAQ() {
 
 const PURPOSES = [
   { label: "Play time", icon: "🛝" },
-  ...BIRTHDAY_PACKAGES.map((p) => ({ label: `Birthday – ${p.name}`, icon: "🎂" })),
+  ...BIRTHDAY_OPTIONS.map((p) => ({ label: `Birthday – ${p.name}`, icon: "🎂" })),
   { label: "Membership", icon: "💳" },
   { label: "Other question", icon: "💬" },
 ];

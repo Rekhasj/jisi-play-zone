@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BIRTHDAY_PACKAGES, BUSINESS, HERO_SLIDES, OPENING_HOURS, PRICING, whatsAppLink } from "@/data/site";
+import { BUSINESS, HERO_SLIDES, OPENING_HOURS, PARTY_AREA_OFFER, PRICING, whatsAppLink } from "@/data/site";
 import { HeroScene } from "./Scenes";
 import { Mascot, Road, Star, rupee } from "./ui";
 
@@ -134,7 +134,7 @@ export default function Hero() {
         {[
           { icon: "⏰", bg: "bg-sun-soft", title: todayHours ? `Today ${todayHours}` : "Open all 7 days", sub: "Open all 7 days", href: "#contact" },
           { icon: "🎟️", bg: "bg-lilac", title: `From ${rupee(PRICING.tickets[0].price)}`, sub: `per child · ${PRICING.session}`, href: "#pricing" },
-          { icon: "🎂", bg: "bg-pink-soft", title: "Birthday parties", sub: `from ${rupee(BIRTHDAY_PACKAGES[0].prices.weekday)}`, href: "#birthday" },
+          { icon: "🎂", bg: "bg-pink-soft", title: "Birthday parties", sub: `from just ${rupee(PARTY_AREA_OFFER.price)}`, href: "#birthday" },
           { icon: "📍", bg: "bg-sky-soft", title: BUSINESS.city, sub: "Get directions →", href: BUSINESS.mapsLink, external: true },
         ].map((c, i) => (
           <a

@@ -51,7 +51,7 @@ export const HERO_SLIDES = [
   },
   {
     title: "Birthday Parties Made Easy",
-    text: "Decoration, play time & party room — all in one place.",
+    text: "Decoration, play time & party area — all in one place.",
   },
   {
     title: "Safe, Clean, Soft & Fun",
@@ -62,9 +62,9 @@ export const HERO_SLIDES = [
 // "Why choose us" cards shown after the top banner. `art` picks a cartoon: sun, rocket, chair or cake.
 export const WHY_US = [
   { art: "sun", bg: "bg-sun-soft", title: "Safe & Soft Play", text: "Fully padded play areas, caring staff and CCTV, so you can relax." },
-  { art: "rocket", bg: "bg-lilac", title: "Non-Stop Fun", text: "Slides, ball pool, trampoline, sandpit plus car & bike rides!" },
+  { art: "rocket", bg: "bg-lilac", title: "Non-Stop Fun", text: "Slides, ball pool, trampoline, sandpit plus car, bike & scooty rides!" },
   { art: "chair", bg: "bg-sky-soft", title: "Parents Relax Too", text: "Comfy seating right next to the play area to watch your little ones." },
-  { art: "cake", bg: "bg-pink-soft", title: "Parties Made Easy", text: "Play zone, party room and JiSi Events decoration in one booking." },
+  { art: "cake", bg: "bg-pink-soft", title: "Parties Made Easy", text: "Play zone, party area and decoration in one booking." },
 ] as const;
 
 // Under-3 supervision note shown below the attraction cards.
@@ -87,175 +87,120 @@ export const ATTRACTIONS: {
 // Play time prices (per child, per session).
 export const PRICING = {
   session: "1 hour", // change this if your session length is different
-  rides: "1 car ride + 1 bike ride included", // shown on every ticket
+  // Rides are not in the ticket: sold separately, any mix of the ride types.
+  rides: { price: 50, rounds: 2, types: "Car, bike or scooty" },
   tickets: [
     { id: "weekday", days: "Mon – Fri", price: 200, art: "slide" },
-    { id: "weekend", days: "Sat, Sun & Holidays", price: 300, art: "trampoline" },
+    { id: "weekend", days: "Sat & Sun", price: 300, art: "trampoline" },
   ],
   notes: [
-    "One parent / guardian enters free with every child",
-    "Extra adult: ₹50",
-    "Socks are compulsory — available at counter for ₹40",
+    "Socks are compulsory — bring your own or buy them at the counter (₹40)",
     "Toddlers (1–3 yrs) get 20% off on weekdays",
   ],
 };
 
-// Memberships — one child, valid any day (Mon–Sun), max 2 hours per visit.
-// Hour bundles: the site shows price per hour and the saving against the weekday ticket.
-// `hours: null` = Unlimited monthly plan (one visit a day).
+// Memberships — valid any day (Mon–Sun). The site shows only the member price
+// (per hour, or per day for the Daily Play Pass).
+// `hours: null` = Daily Play Pass: 1 visit a day, 1 hour, for one child, 30 days.
 export type Membership = {
   name: string;
   hours: number | null;
   validity: string;
   price: number;
-  art: "balloon" | "rocket" | "trophy" | "sun"; // cartoon at the top of the card
-  tone: "teal" | "brand" | "navy" | "coral"; // accent colour of the card
+  art: "rocket" | "trophy" | "sun"; // cartoon at the top of the card
+  tone: "brand" | "navy" | "coral"; // accent colour of the card
   popular?: boolean;
   perks: string[];
 };
 export const MEMBERSHIPS: Membership[] = [
   {
-    name: "Starter",
-    hours: 10,
-    validity: "1 month",
-    price: 1499,
-    art: "balloon",
-    tone: "teal",
-    perks: ["Any day, Mon – Sun", "Free socks on first visit"],
-  },
-  {
     name: "Fun Pass",
-    hours: 24,
-    validity: "2 months",
-    price: 2999,
+    hours: 10,
+    validity: "6 months",
+    price: 2000,
     art: "rocket",
     tone: "brand",
-    popular: true,
-    perks: ["Any day, Mon – Sun", "Free socks on first visit", "5% off birthday packages"],
+    perks: ["Use your hours any day, Mon – Sun", "Free socks on first visit"],
   },
   {
     name: "Super Pass",
-    hours: 50,
-    validity: "6 months",
-    price: 5999,
+    hours: 15,
+    validity: "1 year",
+    price: 2500,
     art: "trophy",
     tone: "navy",
-    perks: ["Any day, Mon – Sun", "Can be shared with siblings and friends", "10% off birthday packages"],
+    popular: true,
+    perks: ["Use your hours any day, Mon – Sun", "Free socks on first visit"],
   },
   {
-    name: "Unlimited",
+    name: "Daily Play Pass",
     hours: null,
     validity: "1 month",
-    price: 2499,
+    price: 3000,
     art: "sun",
     tone: "coral",
-    perks: ["One visit every day, up to 2 hours", "For one child (not shareable)", "Best for families nearby"],
+    perks: ["1 visit every day, 1 hour each", "For one child only (not shareable)", "Free socks on first visit"],
   },
 ];
 
 export const MEMBERSHIP_NOTES = [
-  "All plans work any day, Monday to Sunday — maximum 2 hours per visit",
-  "Hours are used per child, per visit (minimum 30 minutes)",
-  "Unlimited: one visit a day for one child; not shareable",
+  "Fun Pass & Super Pass: use your hours any day, Monday to Sunday",
+  "Daily Play Pass: one 1-hour visit a day, for one child only; not shareable",
+  "Free socks on your first visit with every plan",
   "Show your membership card or registered number at the counter",
   "Unused hours expire after the validity period",
 ];
 
-// Extras for birthday parties.
-export const BIRTHDAY_EXTRAS = {
-  extraGuest: 50, // per guest beyond the package's guest limit
-  extraPlate: 80, // extra evening-snack plate (Grand Party)
-  others: "Theme cakes, bigger cakes, kid's name board, return gifts and other special designs — extra price applicable",
+// Birthday options: two simple choices, plus add-ons.
+export type BirthdayOption = {
+  name: string;
+  price: number | null; // null = price shared on enquiry
+  tag: string;
+  included: string[];
+  excluded: string[];
 };
-
-/*
-  Birthday packages — how the prices are worked out (weekday / weekend):
-    play  = kids x 2 hours x party rate (Rs 100 Mon–Fri, Rs 150 Sat–Sun)
-          + decoration (2,000 / 3,500 / 4,000) + cake (Rs 500 per kg) + food
-  Weekdays get bonus play time (Super 3 hrs, Grand 4 hrs) at no extra cost.
-  `worth` = what the same party costs at walk-in rates (Rs 200 / Rs 300 per kid per hour) + decoration, cake and food.
-*/
-export const BIRTHDAY_PACKAGES = [
+export const BIRTHDAY_OPTIONS: BirthdayOption[] = [
   {
-    name: "Mini Party",
-    prices: { weekday: 4999, weekend: 5999 },
-    worth: { weekday: 7000, weekend: 9000 },
-    kids: 10,
-    guests: 25,
-    extraKid: { weekday: 249, weekend: 349 },
-    cakeKg: 2,
-    food: { included: false, title: "Snacks & drinks", detail: "Available at extra price" },
-    playTime: { weekday: "2 hours", weekend: "2 hours" },
-    accent: "var(--color-sky)",
+    name: "Basic Package",
+    price: 999,
+    tag: "🎉 Budget birthday",
     included: [
-      "Play zone for up to 10 kids",
+      "Party area for 2 hours with decoration",
+      "Birthday kid plays free in the play zone for 2 hours",
       "Up to 25 guests in total (kids + adults)",
-      "Balloon decoration + birthday banner",
-      "Cake table decoration",
-      "Cake up to 2 kg",
     ],
-    excluded: ["Snacks & drinks (extra price)", "Return gifts (extra price)"],
+    excluded: ["Play zone for guests (normal ticket price)", "Cake, snacks & return gifts (add-ons below)"],
   },
   {
-    name: "Super Party",
-    prices: { weekday: 9999, weekend: 11999 },
-    worth: { weekday: 17800, weekend: 17800 },
-    kids: 20,
-    guests: 40,
-    extraKid: { weekday: 249, weekend: 349 },
-    cakeKg: 3,
-    food: { included: true, title: "Welcome drinks included", detail: "For all 40 guests · snacks at extra price" },
-    playTime: { weekday: "3 hours", weekend: "2 hours" },
-    accent: "var(--color-grape)",
-    popular: true,
+    name: "Full Play Area",
+    price: null,
+    tag: "🏰 Whole play zone",
     included: [
-      "Play zone for up to 20 kids",
-      "Up to 40 guests in total (kids + adults)",
-      "Balloon decoration",
-      "Cake table decoration",
-      "Welcome drinks for all guests",
-      "Cake up to 3 kg",
+      "The full play area booked just for your party",
+      "Party area with decoration",
+      "All your little guests play together",
+      "Up to 25 guests in total (kids + adults)",
     ],
-    excluded: ["Snacks (extra price)", "Return gifts (extra price)", "Photography"],
+    excluded: ["Cake, snacks & return gifts (add-ons below)"],
   },
-  {
-    name: "Grand Party",
-    prices: { weekday: 14999, weekend: 17999 },
-    worth: { weekday: 34100, weekend: 28100 },
-    kids: 30,
-    guests: 60,
-    extraKid: { weekday: 249, weekend: 349 },
-    cakeKg: 5,
-    food: {
-      included: true,
-      title: "Welcome drinks + evening snacks",
-      detail: "Drinks for all 60 guests · snacks (3 chaat + 3 sweets) for the 30 kids",
-    },
-    playTime: { weekday: "4 hours", weekend: "2 hours" },
-    accent: "#fb923c",
-    included: [
-      "Play zone for up to 30 kids",
-      "Up to 60 guests in total (kids + adults)",
-      "Stage decoration with balloons",
-      "Entry arch",
-      "Cake table decoration",
-      "Photo booth with props",
-      "Welcome drinks for all guests",
-      "Evening snacks for the kids (3 types of chaat, 3 types of sweets)",
-      "Cake up to 5 kg",
-    ],
-    excluded: ["Kid's name board (extra price)", "Return gifts (extra price)", "Professional photographer", "Lunch / dinner for adults"],
-  },
+];
+// The cheapest option, used for "from just ₹999" labels.
+export const PARTY_AREA_OFFER = BIRTHDAY_OPTIONS[0] as BirthdayOption & { price: number };
+
+// Add-ons for any birthday party. Prices are shared on enquiry.
+export const BIRTHDAY_ADDONS = [
+  { icon: "🎂", name: "Cake", detail: "Price per kg · choose your flavour" },
+  { icon: "🍟", name: "Snacks", detail: "For kids & guests" },
+  { icon: "🎁", name: "Return gifts", detail: "For every little guest" },
+  { icon: "🎊", name: "Party poppers", detail: "For the cake moment" },
+  { icon: "🔢", name: "Birthday number", detail: "Number candle or balloon" },
 ];
 
 export const BIRTHDAY_POLICY = [
-  "Each package includes a set number of kids for the play zone and guests in total (kids + adults); extra guests ₹50 each",
-  "Extra kids in the play zone: ₹249 each Mon–Fri, ₹349 each Sat–Sun",
-  "Extra evening-snack plates (Grand Party): ₹80 each",
-  "Pay 50% advance to block your date; balance on the party day",
+  "Both packages: up to 25 guests in total (kids + adults)",
+  "Pay 50% advance to block the date and time slot for your celebration; balance on the party day",
   "Advance is not refundable, but you can move the date once or pass the booking to family or friends (tell us on WhatsApp)",
-  "Theme cakes, name boards and return gifts are quoted separately based on your theme",
-  "Regular customers using the play area will not be restricted — they continue using their packages without affecting your birthday event",
+  "Cake, snacks and other add-ons are quoted separately — message or call us",
 ];
 
 // Gallery tiles (cartoon scenes).
@@ -278,11 +223,10 @@ export const TESTIMONIALS = [
 
 export const FAQS = [
   { q: "What age group is the play zone for?", a: "Children aged 1 to 12 years. Kids under 3 must be accompanied by a parent or guardian." },
-  { q: "Are socks compulsory?", a: "Yes, for hygiene and safety socks are compulsory for kids and adults inside the play area. You can buy them at the counter." },
-  { q: "Can parents stay with the kids?", a: "Yes. One parent enters free with each child. You can also relax in the parent seating area." },
+  { q: "Are socks compulsory?", a: "Yes, socks are compulsory for kids inside the play area, for hygiene and safety. Bring your own or buy them at the counter. Adults do not need socks." },
   { q: "Can we bring outside food?", a: "Outside food is not allowed in the play area. For birthday parties, you may bring your own cake." },
   { q: "How do I book a birthday party?", a: "Fill the booking form or WhatsApp us. A 50% advance confirms your date and time." },
-  { q: "Do I need to book play time in advance?", a: "Walk-ins are welcome. On weekends and holidays we recommend booking a slot on WhatsApp." },
+  { q: "Do I need to book play time in advance?", a: "Yes, advance booking is compulsory. Book your date and time slot on WhatsApp or call us before you come." },
 ];
 
 export const RULES = [

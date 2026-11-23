@@ -32,9 +32,9 @@ export function Logo({ light }: { light?: boolean }) {
 
 const RIBBON = [
   "🧦 Please remember to bring your socks!",
-  "🎉 Birthday party bookings open",
+  "🎉 Birthday parties from just ₹999",
   "🕚 Open all 7 days",
-  "🚗 Car & bike ride with every hour",
+  "🚗 Car, bike & scooty rides: ₹50 for 2 rounds",
 ];
 
 export default function Header() {
