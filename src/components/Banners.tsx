@@ -11,7 +11,7 @@ import { Bike, Car, Cloud, Mascot, Star, WhatsAppIcon } from "./ui";
 // Local copy: the one in ui.tsx is a client-module function and can't be called while rendering on the server.
 const inr = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 
-const BASIC = { ...BIRTHDAY_OPTIONS[0], price: BIRTHDAY_OPTIONS[0].price ?? 999 };
+const BASIC = { ...BIRTHDAY_OPTIONS[0], price: BIRTHDAY_OPTIONS[0].price ?? 1999 };
 const [WEEKDAY, WEEKEND] = PRICING.tickets;
 const RIDES = PRICING.rides;
 const MEMBER_ART = { rocket: Rocket, trophy: Trophy, sun: SunFace } as const;
@@ -312,7 +312,7 @@ function BirthdayBurst({ size, rotate }: { size: number; rotate: number }) {
       <div className="font-bold text-white" style={{ fontSize: 23 * k }}>
         2 hrs + decoration
         <br />
-        up to 25 guests
+        up to 20 guests
       </div>
     </Burst>
   );
@@ -611,7 +611,7 @@ export const BANNERS: BannerDef[] = [
   },
   {
     id: "birthday-post",
-    title: "Birthday at ₹999 · Instagram post",
+    title: `Birthday at ${inr(BASIC.price)} · Instagram post`,
     size: "post",
     render: () => (
       <Frame size="post" className="bg-pink-soft">
@@ -640,7 +640,7 @@ export const BANNERS: BannerDef[] = [
   },
   {
     id: "birthday-story",
-    title: "Birthday at ₹999 · WhatsApp status / Instagram story",
+    title: `Birthday at ${inr(BASIC.price)} · WhatsApp status / Instagram story`,
     size: "story",
     render: () => (
       <Frame size="story" className="bg-pink-soft">
@@ -705,7 +705,7 @@ export const BANNERS: BannerDef[] = [
             <div className="leading-tight">
               <div className="text-[30px] font-bold uppercase text-ink/70">🎂 Birthday parties at just</div>
               <div className="font-display text-[120px] leading-none text-cherry-dark">{inr(BASIC.price)}</div>
-              <div className="text-[26px] font-semibold text-ink/75">Party area 2 hrs with decoration · up to 25 guests</div>
+              <div className="text-[26px] font-semibold text-ink/75">Party area 2 hrs with decoration · up to 20 guests</div>
             </div>
           </div>
         </div>

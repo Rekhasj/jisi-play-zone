@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BUSINESS, NAV_LINKS, telLink } from "@/data/site";
+import { BUSINESS, NAV_LINKS, PARTY_AREA_OFFER, telLink } from "@/data/site";
+import { rupee } from "./ui";
 import { JiSiKids } from "./Kids";
 import { JiSiWordmark } from "./Wordmark";
 
@@ -36,7 +37,7 @@ export function Logo({ light }: { light?: boolean }) {
 
 const RIBBON = [
   "🧦 Please remember to bring your socks!",
-  "🎉 Birthday parties from just ₹999",
+  `🎉 Birthday parties from just ${rupee(PARTY_AREA_OFFER.price)}`,
   "🕚 Open all 7 days",
   "🚗 Car, bike & scooty rides: ₹50 for 2 rounds",
 ];

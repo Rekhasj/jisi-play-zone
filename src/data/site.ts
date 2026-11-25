@@ -162,12 +162,12 @@ export type BirthdayOption = {
 export const BIRTHDAY_OPTIONS: BirthdayOption[] = [
   {
     name: "Basic Package",
-    price: 999,
+    price: 1999,
     tag: "🎉 Budget birthday",
     included: [
       "Party area for 2 hours with decoration",
       "Birthday kid plays free in the play zone for 2 hours",
-      "Up to 25 guests in total (kids + adults)",
+      "Up to 20 guests in total (kids + adults)",
     ],
     excluded: ["Play zone for guests (normal ticket price)", "Cake, snacks & return gifts (add-ons below)"],
   },
@@ -179,12 +179,12 @@ export const BIRTHDAY_OPTIONS: BirthdayOption[] = [
       "The full play area booked just for your party",
       "Party area with decoration",
       "All your little guests play together",
-      "Up to 25 guests in total (kids + adults)",
+      "25 to 30 guests in total (kids + adults)",
     ],
     excluded: ["Cake, snacks & return gifts (add-ons below)"],
   },
 ];
-// The cheapest option, used for "from just ₹999" labels.
+// The cheapest option, used for "from just ₹1,999" labels.
 export const PARTY_AREA_OFFER = BIRTHDAY_OPTIONS[0] as BirthdayOption & { price: number };
 
 // Add-ons for any birthday party. Prices are shared on enquiry.
@@ -197,7 +197,7 @@ export const BIRTHDAY_ADDONS = [
 ];
 
 export const BIRTHDAY_POLICY = [
-  "Both packages: up to 25 guests in total (kids + adults)",
+  "Basic Package: up to 20 guests · Full Play Area: 25 to 30 guests (kids + adults in total)",
   "Pay 50% advance to block the date and time slot for your celebration; balance on the party day",
   "Advance is not refundable, but you can move the date once or pass the booking to family or friends (tell us on WhatsApp)",
   "Cake, snacks and other add-ons are quoted separately — message or call us",
