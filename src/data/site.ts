@@ -95,6 +95,7 @@ export const PRICING = {
   ],
   notes: [
     "Socks are compulsory — bring your own or buy them at the counter (₹40)",
+    "Kids under 3 must wear a diaper. Diapers available at the counter",
     "Toddlers (1–3 yrs) get 20% off on weekdays",
   ],
 };
@@ -222,8 +223,8 @@ export const TESTIMONIALS = [
 ];
 
 export const FAQS = [
-  { q: "What age group is the play zone for?", a: "Children aged 1 to 12 years. Kids under 3 must be accompanied by a parent or guardian." },
-  { q: "Are socks compulsory?", a: "Yes, socks are compulsory for kids inside the play area, for hygiene and safety. Bring your own or buy them at the counter. Adults do not need socks." },
+  { q: "What age group is the play zone for?", a: "Children aged 1 to 12 years. Kids under 3 must wear a diaper and be accompanied by a parent or guardian." },
+  { q: "Are socks compulsory?", a: "Yes, socks are compulsory for kids inside the play area, for hygiene and safety. Bring your own or buy them at the counter." },
   { q: "Can we bring outside food?", a: "Outside food is not allowed in the play area. For birthday parties, you may bring your own cake." },
   { q: "How do I book a birthday party?", a: "Fill the booking form or WhatsApp us. A 50% advance confirms your date and time." },
   { q: "Do I need to book play time in advance?", a: "Yes, advance booking is compulsory. Book your date and time slot on WhatsApp or call us before you come." },
@@ -231,6 +232,7 @@ export const FAQS = [
 
 export const RULES = [
   "Socks compulsory",
+  "Diapers compulsory for kids under 3",
   "No shoes in play area",
   "Adult supervision for kids under 3",
   "No food or drinks inside play area",
