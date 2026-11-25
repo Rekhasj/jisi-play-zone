@@ -6,8 +6,19 @@
     </linearGradient>
   </defs>
   <circle cx="50" cy="50" r="48" fill="url(#grad)"/>
-  <!-- small coral balloon, like the site's mascot -->
-  <circle cx="76" cy="22" r="11" fill="#FF7A59"/>
-  <circle cx="72.5" cy="18.5" r="3" fill="#FFFFFF" opacity=".55"/>
-  <text x="50" y="62" font-family="Arial Black, sans-serif" font-size="28" fill="white" text-anchor="middle" font-weight="bold">JiSi</text>
+  <!-- "JiSi" with dotless i's; a balloon dots each i (coral, then yellow), nothing on the J -->
+  <g font-family="Arial Black, Arial, sans-serif" font-size="28" font-weight="bold" fill="#FFFFFF" text-anchor="middle">
+    <text x="30" y="68">J</text>
+    <text x="45" y="68">&#x131;</text>
+    <text x="59.5" y="68">S</text>
+    <text x="74" y="68">&#x131;</text>
+  </g>
+  <g stroke="#12355B" stroke-width="1">
+    <path d="M45 48.5 q-1.5 2 0 4.5" fill="none"/>
+    <ellipse cx="45" cy="41.5" rx="5.5" ry="6.5" fill="#FF7A59"/>
+    <path d="M74 48.5 q-1.5 2 0 4.5" fill="none"/>
+    <ellipse cx="74" cy="41.5" rx="5.5" ry="6.5" fill="#FFD166"/>
+  </g>
+  <ellipse cx="43" cy="39" rx="1.4" ry="2.2" fill="#FFFFFF" opacity=".6"/>
+  <ellipse cx="72" cy="39" rx="1.4" ry="2.2" fill="#FFFFFF" opacity=".6"/>
 </svg>

@@ -5,6 +5,7 @@ import { BIRTHDAY_ADDONS, BIRTHDAY_OPTIONS, BUSINESS, MEMBERSHIPS, PRICING } fro
 import { Rocket, SlideScene, SunFace, TrampolineScene, Trophy } from "./Illustrations";
 import { BallPitScene, ClimbScene, HeroScene, PartyScene, SandpitScene } from "./Scenes";
 import { JiSiKids } from "./Kids";
+import { JiSiWordmark } from "./Wordmark";
 import { Bike, Car, Cloud, Mascot, Star, WhatsAppIcon } from "./ui";
 
 // Local copy: the one in ui.tsx is a client-module function and can't be called while rendering on the server.
@@ -62,8 +63,8 @@ function Brand({ light = false, scale = 1 }: { light?: boolean; scale?: number }
         <JiSiKids className="h-auto w-full" />
       </div>
       <div className="leading-none">
-        <div className={`font-display ${light ? "text-sun" : "text-grape"}`} style={{ fontSize: 76 * scale, lineHeight: 0.85 }}>
-          JiSi
+        <div className={`font-display ${light ? "text-sun" : "text-grape"}`} style={{ fontSize: 76 * scale, lineHeight: 0.85, paddingTop: 22 * scale }}>
+          <JiSiWordmark />
         </div>
         <div
           className={`font-bold uppercase ${light ? "text-white" : "text-ink/75"}`}
@@ -71,9 +72,6 @@ function Brand({ light = false, scale = 1 }: { light?: boolean; scale?: number }
         >
           Play Zone
         </div>
-      </div>
-      <div style={{ width: 62 * scale, height: 86 * scale }}>
-        <Mascot className="h-full w-full" />
       </div>
     </div>
   );
@@ -246,14 +244,11 @@ function KidsLogo({ kidsW, jisi }: { kidsW: number; jisi: number }) {
       </div>
       <div className="pb-2 leading-none">
         <div className="font-display text-sun [text-shadow:0_6px_0_rgb(18_53_91/0.35)]" style={{ fontSize: jisi, lineHeight: 0.8 }}>
-          JiSi
+          <JiSiWordmark />
         </div>
         <div className="mt-2 font-extrabold uppercase text-white" style={{ fontSize: jisi * 0.27, letterSpacing: "0.2em" }}>
           Play Zone
         </div>
-      </div>
-      <div className="self-start" style={{ width: kidsW * 0.42 }}>
-        <Mascot className="h-auto w-full" />
       </div>
     </div>
   );

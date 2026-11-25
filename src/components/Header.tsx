@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { BUSINESS, NAV_LINKS, telLink } from "@/data/site";
 import { JiSiKids } from "./Kids";
-import { Mascot } from "./ui";
+import { JiSiWordmark } from "./Wordmark";
 
 const NAV_STYLE: Record<string, { icon: string; bg: string }> = {
   "#home": { icon: "🏠", bg: "bg-sky" },
@@ -20,15 +20,16 @@ const NAV_STYLE: Record<string, { icon: string; bg: string }> = {
 export function Logo({ light }: { light?: boolean }) {
   return (
     <a href="#home" className="flex items-center gap-1.5" aria-label={`${BUSINESS.name} home`}>
-      {/* the two kids behind the name on one side, the balloon on the other */}
+      {/* the two kids behind the name; balloons dot the i's */}
       <JiSiKids className="h-12 w-auto" />
       <span className="leading-none">
-        <span className={`block font-display text-[1.8rem] leading-[0.9] ${light ? "text-sun" : "text-grape"}`}>JiSi</span>
+        <span className={`block pt-2 font-display text-[1.8rem] leading-[0.9] ${light ? "text-sun" : "text-grape"}`}>
+          <JiSiWordmark />
+        </span>
         <span className={`block text-[11px] font-bold uppercase tracking-[0.18em] ${light ? "text-white" : "text-ink/70"}`}>
           Play Zone
         </span>
       </span>
-      <Mascot className="h-11 w-8 animate-bob" />
     </a>
   );
 }

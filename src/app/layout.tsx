@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Baloo_2, Fredoka } from "next/font/google";
 import "./globals.css";
 
-const baloo = Baloo_2({ subsets: ["latin"], variable: "--font-baloo", weight: ["600", "700", "800"] });
+const baloo = Baloo_2({ subsets: ["latin", "latin-ext"], variable: "--font-baloo", weight: ["600", "700", "800"] });
 const fredoka = Fredoka({ subsets: ["latin"], variable: "--font-fredoka", weight: ["400", "500", "600", "700"] });
 
 export const metadata: Metadata = {
@@ -10,7 +10,8 @@ export const metadata: Metadata = {
   title: "JiSi Play Zone | Indoor Soft Play & Birthday Parties in Kuppam",
   description:
     "Kuppam's indoor soft play zone for kids aged 1–12: ball pool, slides, trampoline, sandpit, car & bike rides and birthday party packages. Book on WhatsApp.",
-  icons: { icon: "/jisi.svg" },
+  // bump ?v= whenever the icon changes so browsers drop the cached one
+  icons: { icon: "/jisi.svg?v=2" },
   openGraph: {
     title: "JiSi Play Zone, Kuppam",
     description: "Indoor soft play & birthday parties for kids. Book on WhatsApp.",
