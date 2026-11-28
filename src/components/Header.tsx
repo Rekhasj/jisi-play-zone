@@ -13,6 +13,7 @@ const NAV_STYLE: Record<string, { icon: string; bg: string }> = {
   "#membership": { icon: "💳", bg: "bg-grape" },
   "#pricing": { icon: "🎟️", bg: "bg-tangerine" },
   "#birthday": { icon: "🎂", bg: "bg-bubble" },
+  "#shop": { icon: "🛍️", bg: "bg-tangerine" },
   "#gallery": { icon: "📸", bg: "bg-grass" },
   "#testimonials": { icon: "⭐", bg: "bg-sun" },
   "#contact": { icon: "📞", bg: "bg-sky" },

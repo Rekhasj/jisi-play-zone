@@ -1,4 +1,5 @@
 import type { SceneKey } from "@/components/Scenes";
+import type { ShopArtKey } from "@/components/ShopArt";
 
 // Single place to edit everything on the site: contact details, prices,
 // packages, photos and FAQs. Every section reads from this file.
@@ -39,6 +40,7 @@ export const NAV_LINKS = [
   { href: "#membership", label: "Membership" },
   { href: "#pricing", label: "Pricing" },
   { href: "#birthday", label: "Birthday Packages" },
+  { href: "#shop", label: "Shop" },
   { href: "#gallery", label: "Gallery" },
   { href: "#testimonials", label: "Testimonials" },
   { href: "#contact", label: "Contact Us" },
@@ -94,7 +96,7 @@ export const PRICING = {
     { id: "weekend", days: "Sat & Sun", price: 300, art: "trampoline" },
   ],
   notes: [
-    "Socks are compulsory — bring your own or buy them at the counter (₹40)",
+    "Socks are compulsory — bring your own or buy them at the counter",
     "Kids under 3 must wear a diaper. Diapers available at the counter",
     "Toddlers (1–3 yrs) get 20% off on weekdays",
   ],
@@ -202,6 +204,16 @@ export const BIRTHDAY_POLICY = [
   "Pay 50% advance to block the date and time slot for your celebration; balance on the party day",
   "Advance is not refundable, but you can move the date once or pass the booking to family or friends (tell us on WhatsApp)",
   "Cake, snacks and other add-ons are quoted separately — message or call us",
+];
+
+// Shop at the counter: toys, books and gifts.
+export const SHOP_ITEMS: { name: string; text: string; art: ShopArtKey; bg: string }[] = [
+  { name: "Toys", text: "Soft toys, puzzles & fun little games", art: "teddy", bg: "bg-sun-soft" },
+  { name: "Books", text: "Story, colouring & activity books", art: "books", bg: "bg-sky-soft" },
+  { name: "Birthday gifts", text: "Lovely gifts for the birthday child", art: "gift", bg: "bg-pink-soft" },
+  { name: "Return gifts", text: "Gift bags for every little guest", art: "returnGifts", bg: "bg-lilac" },
+  { name: "Party supplies", text: "Balloons, caps, poppers & candles", art: "party", bg: "bg-sun-soft" },
+  { name: "Kids socks", text: "Socks are compulsory for kids in the play area", art: "socks", bg: "bg-sky-soft" },
 ];
 
 // Gallery tiles (cartoon scenes).
